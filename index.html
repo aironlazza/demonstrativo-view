@@ -11,13 +11,17 @@
     <script src="script.js"></script>
 </head>
 <body>
-<div id="filterContainer">
-    <label for="startDate">Data Inicial:</label>
-    <input type="date" id="startDate">
-    <label for="endDate">Data Final:</label>
-    <input type="date" id="endDate">
-    <button id="filterButton">Filtrar</button>
-</div>
+    <div class="header">
+        <h3>Laboratório Leuckert Ltda - Demonstrativo de Caixa</h3>
+        <h4>De: 01/02/2021 00:00:00 A 01/02/2021 23:59:59<span>Posto(s): Todos</span></h4>
+    </div>
+    <div id="filterContainer">
+        <label for="startDate">Data Inicial:</label>
+        <input type="date" id="startDate">
+        <label for="endDate">Data Final:</label>
+        <input type="date" id="endDate">
+        <button id="filterButton">Filtrar</button>
+    </div>
     <table id="tabela" class="compact nowrap stripe">
         <thead>
             <tr>
