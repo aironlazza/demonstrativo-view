@@ -33,30 +33,27 @@ $(document).ready(function () {
 					url: "//cdn.datatables.net/plug-ins/2.2.2/i18n/pt-BR.json",
 				},
 				layout: {
-					topStart: $('#filterContainer').get(0),
-					topEnd:{
+					topStart: $("#filterContainer").get(0),
+					topEnd: {
 						buttons: [
 							{
 								//print
 								extend: "print",
-								text: "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-printer printerIcon' viewBox='0 0 16 16'>" +
-  											"<path d='M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1'/>" +
-											"<path d='M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1'/>" +
-										"</svg> Imprimir",
+								text:
+									"<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-printer printerIcon' viewBox='0 0 16 16'>" +
+									"<path d='M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1'/>" +
+									"<path d='M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1'/>" +
+									"</svg> Imprimir",
 								className: "printButton",
 								name: "printButton",
 								customize: function (win) {
-									$(win.document.body)
-										.prepend(`
+									$(win.document.body).prepend(`
 											
-											`)
-								}
-							}
+											`);
+								},
+							},
 						],
-
 					},
-					
-					
 				},
 				data: data,
 				columns: [
@@ -75,7 +72,6 @@ $(document).ready(function () {
 					{ data: "nf_id" },
 					{ data: "emissao" },
 				],
-				
 			});
 			table.on("draw", function () {
 				console.log("Table drawn.");
@@ -97,7 +93,6 @@ $(document).ready(function () {
 			const rowDateObj = moment(rowDate, "DD/MM/YYYY");
 			const startDateObj = moment(startDate, "YYYY-DD-MM");
 			const endDateObj = moment(endDate, "YYYY-DD-MM");
-
 			return rowDateObj.isBetween(startDateObj, endDateObj, "days", "[]");
 		}
 
