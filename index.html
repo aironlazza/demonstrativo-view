@@ -5,20 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demonstrativo de Caixa</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css"/>
+    <link href="https://cdn.datatables.net/v/dt/moment-2.29.4/dt-2.2.2/b-3.2.3/b-print-3.2.3/datatables.min.css" rel="stylesheet" integrity="sha384-ER0IOM28Ak/x1yeSH6bqfJ3hsfvnBK89D+QgCbs665R0C53d8Ze8gWvQmxfYfj3e" crossorigin="anonymous">
+    <script src="https://cdn.datatables.net/v/dt/moment-2.29.4/dt-2.2.2/b-3.2.3/b-print-3.2.3/datatables.min.js" integrity="sha384-AgmzSukmExbqj2XlXz6YAq9XEC1JNA9doqcA9iI7Ekc2DplUdJIC3UaOrELt5C37" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css"/>
-    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
-    <script src="https://momentjs.com/downloads/moment.min.js"></script>
     <script src="script.js"></script>
 </head>
 <body>
-<div>
-    <label for="startDate">Data Inicial:</label>
-    <input type="date" id="startDate">
-    <label for="endDate">Data Final:</label>
-    <input type="date" id="endDate">
-    <button id="filterButton">Filtrar</button>
-</div>
     <table id="tabela" class="compact nowrap stripe">
         <thead>
             <tr>

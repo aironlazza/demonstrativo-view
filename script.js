@@ -32,6 +32,35 @@ $(document).ready(function () {
 				language: {
 					url: "//cdn.datatables.net/plug-ins/2.2.2/i18n/pt-BR.json",
 				},
+				layout: {
+					topStart:$(`
+						<div id="filterContainer">
+							 <label for="startDate">Data Inicial:</label>
+							 <input type="date" id="startDate">
+							 <label for="endDate">Data Final:</label>
+							 <input type="date" id="endDate">
+							 <button id="filterButton">Filtrar</button>
+						</div>
+				  `),
+					topEnd:{
+						buttons: [
+							{
+								//print
+								extend: "print",
+								text: "Imprimir",
+								className: "btn btn-primary",
+							}
+							// {
+							// 	text: "Filtrar",
+							// 	className: "btn btn-primary",
+							// 	id: "filterButton",
+							// },
+						],
+
+					},
+					bottomEnd: "search"
+					
+				},
 				data: data,
 				columns: [
 					{ data: "data" },
@@ -50,19 +79,22 @@ $(document).ready(function () {
 					{ data: "emissao" },
 				],
 			});
+			table.on("draw", function () {
+				console.log("Table drawn.");
+			});
 		},
 		error: function (xhr, status, error) {
 			console.error("Error fetching data:", error);
 		},
 	});
+
 	$.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
 		const startDate = $("#startDate").val();
 		const endDate = $("#endDate").val();
 		const rowDate = data[0]; // Date is in the first column (index 0)
-		console.log(startDate);
-		console.log(endDate);
-		console.log(rowDate);
-
+		console.log("Row date:", rowDate);
+		console.log("Start date:", startDate);
+		console.log("End date:", endDate);
 		if (startDate && endDate) {
 			const rowDateObj = moment(rowDate, "DD/MM/YYYY");
 			const startDateObj = moment(startDate, "YYYY-DD-MM");
@@ -77,6 +109,5 @@ $(document).ready(function () {
 	// Apply the filter when the button is clicked
 	$("#filterButton").on("click", function () {
 		table.draw();
-		
 	});
 });
