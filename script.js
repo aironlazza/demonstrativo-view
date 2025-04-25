@@ -33,15 +33,7 @@ $(document).ready(function () {
 					url: "//cdn.datatables.net/plug-ins/2.2.2/i18n/pt-BR.json",
 				},
 				layout: {
-					topStart:$(`
-						<div id="filterContainer">
-							 <label for="startDate">Data Inicial:</label>
-							 <input type="date" id="startDate">
-							 <label for="endDate">Data Final:</label>
-							 <input type="date" id="endDate">
-							 <button id="filterButton">Filtrar</button>
-						</div>
-				  `),
+					topStart: $('#filterContainer').get(0),
 					topEnd:{
 						buttons: [
 							{
