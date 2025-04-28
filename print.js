@@ -3,33 +3,27 @@ let lastDate = null;
 let valorComNota = 0;
 let valorSemNota = 0;
 let total = 0;
-console.log("here")
+body.find(".header").before(`<div>teste</div>`)
 body.find("table tbody tr").each(function () {
     let row = $(this);
     console.log(row)
-    console.log(row.find("td").eq(0).text());
     let date = row.find("td").eq(0).text();
     if (lastDate && date !== lastDate) {
         console.log("appending footer")
         row.before(`
-            <div class="footerContainer">
-                <h4>Data: ${lastDate}</h4>
-                <div class="footerValores">
-                    <div>Valor sem nota: ${valorSemNota}</div>
-                    <div>Valor com nota: ${valorComNota}</div>
-                    <div>Valor total: ${total}</div>
-                </div>
-            </div>
+            <tr>
+                <th colspan="4">${lastDate}</th>
+                <th colspan="1">Valor Sem Nota: R$${valorSemNota.toFixed(2)}</th>
+                <th colspan="5">Valor Com Nota: R$${valorComNota.toFixed(2)}</th>
+                <th colspan="4">Valor Total: R$${total.toFixed(2)}</th>
+			</tr>
             `);
-        lastDate = date;
         valorComNota = 0;
         valorSemNota = 0;
         total = 0;
     }
     if (row.find("td").eq(3).text().trim() === "ENTRADA") {
-        console.log("entrada")
         let valor = parseFloat(row.find("td").eq(10).text().replace(",", "."));
-        console.log(valor)
         if (row.find("td").eq(12).text().trim()) {
             valorComNota += valor;
         } else {
@@ -37,5 +31,5 @@ body.find("table tbody tr").each(function () {
         }
         total += valor;
     }
-
+    lastDate = date;
 });

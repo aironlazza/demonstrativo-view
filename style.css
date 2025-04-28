@@ -1,3 +1,10 @@
+#tabela .footer {
+    display: table-row-group;
+    background-color: #f2f2f2;
+    font-size: 15px;
+    color: #000;
+}
+
 .footerContainer{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
