@@ -1,64 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demonstrativo de Caixa</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <link href="https://cdn.datatables.net/v/dt/moment-2.29.4/dt-2.2.2/b-3.2.3/b-print-3.2.3/datatables.min.css" rel="stylesheet" integrity="sha384-ER0IOM28Ak/x1yeSH6bqfJ3hsfvnBK89D+QgCbs665R0C53d8Ze8gWvQmxfYfj3e" crossorigin="anonymous">
-    <script src="https://cdn.datatables.net/v/dt/moment-2.29.4/dt-2.2.2/b-3.2.3/b-print-3.2.3/datatables.min.js" integrity="sha384-AgmzSukmExbqj2XlXz6YAq9XEC1JNA9doqcA9iI7Ekc2DplUdJIC3UaOrELt5C37" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css"/>
-    <script src="script.js"></script>
-</head>
-<body>
-    <div class="header">
-        <h3>Laboratório Leuckert Ltda - Demonstrativo de Caixa</h3>
-        <h4>De: 01/02/2021 00:00:00 A 01/02/2021 23:59:59<span>Posto(s): Todos</span></h4>
-    </div>
-    <div id="filterContainer">
-        <label for="startDate">Data Inicial:</label>
-        <input type="date" id="startDate">
-        <label for="endDate">Data Final:</label>
-        <input type="date" id="endDate">
-        <button id="filterButton">Filtrar</button>
-    </div>
-    <table id="tabela" class="compact nowrap stripe">
-        <thead>
-            <tr>
-                <th>Data Lan.</th>
-                <th>Posto</th>
-                <th>Caixa</th>
-                <th>Tipo Lan.</th>
-                <th>Cliente</th>
-                <th>Forma Pgto.</th>
-                <th>Usuário</th>
-                <th>Valor Parcela</th>
-                <th>Desc.</th>
-                <th>Acrésc.</th>
-                <th>Valor Pago</th>
-                <th>Nº Pedido</th>
-                <th>Nota Fiscal</th>
-                <th>Emissão</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-                <td>placeholder</td>
-            </tr>
-        </tbody>
-    </table>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Demonstrativo de Caixa</title>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<link
+			href="https://cdn.datatables.net/v/dt/moment-2.29.4/dt-2.2.2/b-3.2.3/b-print-3.2.3/datatables.min.css"
+			rel="stylesheet"
+			integrity="sha384-ER0IOM28Ak/x1yeSH6bqfJ3hsfvnBK89D+QgCbs665R0C53d8Ze8gWvQmxfYfj3e"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.datatables.net/v/dt/moment-2.29.4/dt-2.2.2/b-3.2.3/b-print-3.2.3/datatables.min.js"
+			integrity="sha384-AgmzSukmExbqj2XlXz6YAq9XEC1JNA9doqcA9iI7Ekc2DplUdJIC3UaOrELt5C37"
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" href="style.css" />
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<h3>Laboratório Leuckert Ltda - Demonstrativo de Caixa</h3>
+			<h4>
+				De:
+				<span id="headerStartDate">01/07/2020</span>
+				00:00:00 A
+				<span id="headerEndDate">01/02/2021</span>
+				23:59:59
+				<span id="posto">Posto(s): Todos</span>
+			</h4>
+		</div>
+		<div id="filterContainer">
+			<label for="startDate">Data Inicial:</label>
+			<input type="date" id="startDate" />
+			<label for="endDate">Data Final:</label>
+			<input type="date" id="endDate" />
+			<button id="filterButton">Filtrar</button>
+		</div>
+		<table id="tabela" class="compact nowrap stripe">
+			<thead>
+				<tr>
+					<th>Data Lan.</th>
+					<th>Posto</th>
+					<th>Caixa</th>
+					<th>Tipo Lan.</th>
+					<th>Cliente</th>
+					<th>Forma Pgto.</th>
+					<th>Usuário</th>
+					<th>Valor Parcela</th>
+					<th>Desc.</th>
+					<th>Acrésc.</th>
+					<th>Valor Pago</th>
+					<th>Nº Pedido</th>
+					<th>Nota Fiscal</th>
+					<th>Emissão</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+					<td>placeholder</td>
+				</tr>
+                <div class="footerContainer">
+                    <h4>Data: 04/01/2021</h4>
+                    <div class="footerValores">
+                        <div>Valor sem nota: 760,00</div>
+                        <div>Valor com nota: 33,00</div>
+                        <div>Valor total: 793,00</div>
+                    </div>
+                </div>
+                
+			</tbody>
+		</table>
+	</body>
 </html>

@@ -25,13 +25,10 @@ $(document).ready(function () {
 			});
 			table = $("#tabela").DataTable({
 				lengthChange: false,
-				pageLength: 25,
+				pageLength: 26,
 				paging: true,
 				searching: true,
 				ordering: false,
-				language: {
-					url: "//cdn.datatables.net/plug-ins/2.2.2/i18n/pt-BR.json",
-				},
 				layout: {
 					topStart: $("#filterContainer").get(0),
 					topEnd: {
@@ -47,10 +44,17 @@ $(document).ready(function () {
 								className: "printButton",
 								name: "printButton",
 								customize: function (win) {
-									$(win.document.body).prepend(`
-											
-											`);
+									let body = $(win.document.body);
+									body.prepend($(".header"));
+									body.find("h1").hide();
+									
 								},
+								customScripts: [
+									"https://code.jquery.com/jquery-3.7.1.min.js",
+									"./print.js",
+									
+								],
+								autoPrint: false,
 							},
 						],
 					},
@@ -82,17 +86,18 @@ $(document).ready(function () {
 		},
 	});
 
+	let startDateObj;
+	let endDateObj;
 	$.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
 		const startDate = $("#startDate").val();
 		const endDate = $("#endDate").val();
 		const rowDate = data[0]; // Date is in the first column (index 0)
-		console.log("Row date:", rowDate);
-		console.log("Start date:", startDate);
-		console.log("End date:", endDate);
 		if (startDate && endDate) {
 			const rowDateObj = moment(rowDate, "DD/MM/YYYY");
-			const startDateObj = moment(startDate, "YYYY-DD-MM");
-			const endDateObj = moment(endDate, "YYYY-DD-MM");
+			startDateObj = moment(startDate, "YYYY-DD-MM");
+			endDateObj = moment(endDate, "YYYY-DD-MM");
+			$("#headerStartDate").html(startDateObj.format("DD/MM/YYYY"));
+			$("#headerEndDate").html(endDateObj.format("DD/MM/YYYY"));
 			return rowDateObj.isBetween(startDateObj, endDateObj, "days", "[]");
 		}
 
@@ -102,5 +107,15 @@ $(document).ready(function () {
 	// Apply the filter when the button is clicked
 	$("#filterButton").on("click", function () {
 		table.draw();
+		//if the table has any text inside the column 12, add a class to the row
+		$("#tabela tbody tr").each(function () {
+			const row = $(this);
+			const cellValue = row.find("td").eq(12).text().trim();
+			if (cellValue) {
+				console.log("Text found in row: ", cellValue);
+			} else {
+				console.log("No text found in row: ", cellValue);
+			}
+		});
 	});
 });
