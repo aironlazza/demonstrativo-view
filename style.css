@@ -1,59 +1,77 @@
-#tabela .footer {
-    display: table-row-group;
-    background-color: #f2f2f2;
-    font-size: 15px;
-    color: #000;
+@media print {
+	.page-break-before {
+		page-break-before: always;
+	}
+	.page-break-after {
+		page-break-after: always;
+	}
+	.print-show {
+		display: block !important;
+	}
 }
+#valores {
+	display: flex;
+	justify-content: space-evenly;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	box-sizing: border-box;
+	height: 120px;
+    border: 1px solid #000;
+}
+/* place a border around #valores' children */
 
-.footerContainer{
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
-    background-color: #f2f2f2;
-}
-.footerContainer h4{
-    border: 1px solid gray;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 15px;
-}
-.footerValores {
+#valores div {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    font-weight: bold;
-    border-collapse: collapse; /* Ensure borders collapse */
-    box-sizing: border-box
-}
-.footerValores div{
-    border-collapse: collapse;
-    width: 100%;
-    padding: 15px;
-    border: 1px solid gray;
-    margin: 0;
-}
-.header{
-    font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid gray;
+    flex-direction: column;
+    box-sizing: border-box;
+    text-align: right;
+    flex-grow: 1; /* Make children stretch equally */
+    border-right: 1px solid #000; /* Add vertical border */
 }
 
-#posto{
-    margin-left: 50px;
+#valores div:last-child {
+    border-right: none; /* Remove the border from the last child */
 }
 
-.printerIcon{
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    /* centralize the icon vertically */
-    vertical-align: middle;
-    margin-right: 5px;
+tbody tr.footerRow td {
+	background-color: #f2f2f2;
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 20px;
+}
+.footerContainer {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	box-sizing: border-box;
+	background-color: #f2f2f2;
 }
 
-#filterContainer{
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
+.header {
+	font-family: Arial, Helvetica, sans-serif;
+	border: 1px solid gray;
+}
+
+#posto {
+	margin-left: 50px;
+}
+
+.printerIcon {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	/* centralize the icon vertically */
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+#filterContainer {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	color: #000;
 }
 
 /* increase horizontal padding in-between columns */
@@ -63,81 +81,81 @@ table.dataTable.compact tfoot th,
 table.dataTable.compact tfoot td,
 table.dataTable.compact tbody th,
 table.dataTable.compact tbody td {
-    padding-left: 10px;
-    padding-right: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 /* change the color of the stripes to a darker shade */
-table.dataTable.stripe>tbody>tr:nth-child(odd):not(:hover) >*{
-    box-shadow: inset 0 0 0 9999px rgb(235, 235, 235);
+table.dataTable.stripe > tbody > tr:nth-child(odd):not(:hover) > * {
+	box-shadow: inset 0 0 0 9999px rgb(235, 235, 235);
 }
 
 /* General table styling */
 table.dataTable {
-    border-collapse: collapse;
-    width: 100%;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    color: #000;
+	border-collapse: collapse;
+	width: 100%;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	color: #000;
 }
 
 /* Header styling */
-table.dataTable thead{
-    background-color: #f2f2f2;
-    border: 1px solid #000;
+table.dataTable thead {
+	background-color: #f2f2f2;
+	border: 1px solid #000;
 }
 table.dataTable thead th {
-    background-color: #f2f2f2;
-    color: #000;
-    font-weight: bold;
-    padding: 5px;
-    text-align: left;
+	background-color: #f2f2f2;
+	color: #000;
+	font-weight: bold;
+	padding: 5px;
+	text-align: left;
 }
 
 /* Body row styling */
 table.dataTable tbody tr {
-    border: 1px solid #000;
+	border: 1px solid #000;
 }
 
 table.dataTable tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
+	background-color: #f9f9f9;
 }
 
 table.dataTable tbody tr:nth-child(even) {
-    background-color: #fff;
+	background-color: #fff;
 }
 
 /* Cell padding */
 table.dataTable tbody td {
-    padding: 5px;
-    text-align: left;
+	padding: 5px;
+	text-align: left;
 }
 
 /* Footer styling */
 table.dataTable tfoot th {
-    background-color: #f2f2f2;
-    border: 1px solid #000;
-    text-align: center;
-    padding: 5px;
+	background-color: #f2f2f2;
+	border: 1px solid #000;
+	text-align: center;
+	padding: 5px;
 }
 
 /* Hover effect */
 table.dataTable tbody tr:hover {
-    background-color: #e6f7ff;
+	background-color: #e6f7ff;
 }
 
 /* Page number buttons */
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-    background-color: #f2f2f2;
-    border: 1px solid #000;
-    color: #000;
-    padding: 2px 5px;
-    margin: 2px;
-    cursor: pointer;
+	background-color: #f2f2f2;
+	border: 1px solid #000;
+	color: #000;
+	padding: 2px 5px;
+	margin: 2px;
+	cursor: pointer;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background-color: #d9d9d9;
-    color: #000;
-    font-weight: bold;
+	background-color: #d9d9d9;
+	color: #000;
+	font-weight: bold;
 }
