@@ -1,9 +1,21 @@
 $(document).ready(function () {
+	flatpickr("#startDate", {
+		dateFormat: "d-m-Y", // Set format to DD-MM-YYYY
+		defaultDate: "01-01-2020", // Set default date
+		locale: "pt", // Set language to Portuguese
+	});
+
+	flatpickr("#endDate", {
+		dateFormat: "d-m-Y", // Set format to DD-MM-YYYY
+		defaultDate: "31-01-2020", // Set default date
+		locale: "pt", // Set language to Portuguese
+	});
 	let table;
 	$.ajax({
 		url: "http://localhost:3000/data",
 		method: "GET",
 		dataType: "json",
+
 		success: function (data) {
 			data.forEach((row) => {
 				row.data = new Date(row.data).toLocaleDateString("pt-BR");
@@ -20,6 +32,7 @@ $(document).ready(function () {
 				else if (row.tipolancamento == -1) row.tipolancamento = "SAÍDA";
 				if (row.forma_pgto == 1) row.forma_pgto = "CHEQUE";
 				else if (row.forma_pgto == 2) row.forma_pgto = "DINHEIRO";
+				else row.forma_pgto = "OUTRO";
 				if (row.cod_ip == "r1taq") row.cod_ip = "taquara";
 				else if (row.cod_ip == "r2taq") row.cod_ip = "recepçaoc";
 			});
@@ -43,18 +56,16 @@ $(document).ready(function () {
 									"</svg> Imprimir",
 								className: "printButton",
 								name: "printButton",
-								customize: function (win) {
-									let body = $(win.document.body);
-									body.prepend($(".header"));
-									body.find("h1").hide();
-									
-								},
 								customScripts: [
 									"https://code.jquery.com/jquery-3.7.1.min.js",
 									"./print.js",
-									
 								],
-								autoPrint: false,
+								customize: function (win) {
+									let body = $(win.document.body);
+									body.prepend($(".header").clone());
+									body.find("h1").hide();
+								},
+								autoPrint: true,
 							},
 						],
 					},
@@ -94,10 +105,15 @@ $(document).ready(function () {
 		const rowDate = data[0]; // Date is in the first column (index 0)
 		if (startDate && endDate) {
 			const rowDateObj = moment(rowDate, "DD/MM/YYYY");
-			startDateObj = moment(startDate, "YYYY-DD-MM");
-			endDateObj = moment(endDate, "YYYY-DD-MM");
+			startDateObj = moment(startDate, "DD-MM-YYYY");
+			endDateObj = moment(endDate, "DD-MM-YYYY");
 			$("#headerStartDate").html(startDateObj.format("DD/MM/YYYY"));
 			$("#headerEndDate").html(endDateObj.format("DD/MM/YYYY"));
+			//update the title of the page with the year and month of the start date
+			// const year = startDateObj.format("YYYY");
+			// const month = startDateObj.format("MM");
+			// const title = `Caixa-NF-${year}-${month}`;
+			// $("title").html(title);
 			return rowDateObj.isBetween(startDateObj, endDateObj, "days", "[]");
 		}
 
@@ -107,15 +123,5 @@ $(document).ready(function () {
 	// Apply the filter when the button is clicked
 	$("#filterButton").on("click", function () {
 		table.draw();
-		//if the table has any text inside the column 12, add a class to the row
-		$("#tabela tbody tr").each(function () {
-			const row = $(this);
-			const cellValue = row.find("td").eq(12).text().trim();
-			if (cellValue) {
-				console.log("Text found in row: ", cellValue);
-			} else {
-				console.log("No text found in row: ", cellValue);
-			}
-		});
 	});
 });

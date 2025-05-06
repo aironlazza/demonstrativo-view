@@ -16,6 +16,14 @@
 			integrity="sha384-AgmzSukmExbqj2XlXz6YAq9XEC1JNA9doqcA9iI7Ekc2DplUdJIC3UaOrELt5C37"
 			crossorigin="anonymous"
 		></script>
+
+		<link
+			href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+
 		<link rel="stylesheet" href="style.css" />
 		<script src="script.js"></script>
 	</head>
@@ -32,9 +40,9 @@
 		</div>
 		<div id="filterContainer">
 			<label for="startDate">Data Inicial:</label>
-			<input type="date" id="startDate" />
+			<input id="startDate"/>
 			<label for="endDate">Data Final:</label>
-			<input type="date" id="endDate" />
+			<input id="endDate"/>
 			<button id="filterButton">Filtrar</button>
 		</div>
 		<table id="tabela" class="compact nowrap stripe">
@@ -75,18 +83,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<div id="valores">
-			<div id="periodo">
-				<p>Período: 03/05/2020</p>
-				<p>Até: 08/05/2020</p>
-			</div>
-			<div>
-				<p>Total Com Nota: R$0.00</p>
-				<p>Total Sem Nota: R$5444.79</p>
-			</div>
-			<div>
-				<p>Total Período: R$5444.79</p>
-			</div>
-		</div>
+
 	</body>
 </html>

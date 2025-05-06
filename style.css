@@ -1,4 +1,7 @@
 @media print {
+	@page {
+		margin: 10mm; /* Adjust margins to fit the content */
+	}
 	.page-break-before {
 		page-break-before: always;
 	}
@@ -8,6 +11,17 @@
 	.print-show {
 		display: block !important;
 	}
+	table.dataTable {
+        width: 95%; /* Ensure the table fits within the page */
+        border-collapse: collapse; /* Ensure borders are merged */
+    }
+	body {
+        margin: 0; /* Remove default browser margins */
+        padding: 0; /* Remove default browser padding */
+    }
+	.dataTables_wrapper {
+        overflow: visible !important; /* Prevent clipping of table content */
+    }
 }
 #valores {
 	display: flex;
